@@ -29,7 +29,7 @@ export default function MyProfile() {
                 </div>
 
                 <Link to="/dashboard/settings"
-                    className="bg-yellow-50 mt-5 md:mt-0 px-3 py-1 flex items-center gap-1 rounded-md font-medium">
+                    className="bg-yellow-600 mt-5 md:mt-0 px-3 py-1 flex items-center gap-1 rounded-md font-medium">
                     <button>Edit</button>
                     <RiEditBoxLine />
                 </Link>
@@ -39,7 +39,7 @@ export default function MyProfile() {
                 <div className="flex w-full items-center justify-between">
                     <p className="text-lg font-semibold text-richblack-5">About</p>
                     <Link to="/dashboard/settings"
-                        className="bg-yellow-50 px-3 py-1 flex items-center gap-1 rounded-md font-medium">
+                        className="bg-yellow-600 px-3 py-1 flex items-center gap-1 rounded-md font-medium">
                         <button>Edit</button>
                         <RiEditBoxLine />
                     </Link>
@@ -59,7 +59,7 @@ export default function MyProfile() {
                         Personal Details
                     </p>
                     <Link to="/dashboard/settings"
-                        className="bg-yellow-50 px-3 py-1 flex items-center gap-1 rounded-md font-medium">
+                        className="bg-yellow-600 px-3 py-1 flex items-center gap-1 rounded-md font-medium">
                         <button>Edit</button>
                         <RiEditBoxLine />
                     </Link>

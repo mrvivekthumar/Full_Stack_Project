@@ -11,15 +11,15 @@ import ConfirmationModal from "../../common/ConfirmationModal";
 import SidebarLink from "./SidebarLinks";
 
 export default function Sidebar() {
-    const { user, loading: profileLoading } = useSelector(
-        (state) => state.profile
-    );
+    const { user, loading: profileLoading } = useSelector((state) => state.profile);
+    const { loading: authLoading } = useSelector((state) => state.auth);
+
     // sidebar ke liye... agar true hoga toh sidebar dikhao agar false rahega toh close kardo
     const [active, setActive] = useState(true);
-    const { loading: authLoading } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // to keep track of confirmation modal
+
+    // to keep track of confirmation modal(logout Confirmation Modal)
     const [confirmationModal, setConfirmationModal] = useState(null);
 
     if (profileLoading || authLoading) {
@@ -49,7 +49,7 @@ export default function Sidebar() {
                                 );
                             })}
                         </div>
-                        <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-richblack-700" />
+                        <div className="mx-auto mt-6 mb-6 h-[2px] w-10/12 bg-richblack-700" />
                         <div className="flex flex-col">
                             <SidebarLink
                                 link={{ name: "Settings", path: "/dashboard/settings" }}
@@ -58,8 +58,8 @@ export default function Sidebar() {
                             <button
                                 onClick={() =>
                                     setConfirmationModal({
-                                        text1: "Are you sure?",
-                                        text2: "You will be logged out of your account.",
+                                        text1: "Are You Sure?",
+                                        text2: "You Will Be Logged Out Of Your Account.",
                                         btn1Text: "Logout",
                                         btn2Text: "Cancel",
                                         btn1Handler: () => dispatch(logout(navigate)),

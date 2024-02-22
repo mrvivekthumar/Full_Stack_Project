@@ -99,6 +99,7 @@ function SignupForm() {
                             value={firstName}
                             onChange={handleOnChange}
                             placeholder="Enter first name"
+                            autoComplete="off"
                             style={{
                                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                             }}
@@ -116,6 +117,7 @@ function SignupForm() {
                             value={lastName}
                             onChange={handleOnChange}
                             placeholder="Enter last name"
+                            autoComplete="off"
                             style={{
                                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                             }}
@@ -134,6 +136,7 @@ function SignupForm() {
                         value={email}
                         onChange={handleOnChange}
                         placeholder="Enter email address"
+                        autoComplete="off"
                         style={{
                             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                         }}
@@ -152,6 +155,7 @@ function SignupForm() {
                             value={password}
                             onChange={handleOnChange}
                             placeholder="Enter Password"
+                            autoComplete="off"
                             style={{
                                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                             }}
@@ -179,6 +183,7 @@ function SignupForm() {
                             value={confirmPassword}
                             onChange={handleOnChange}
                             placeholder="Confirm Password"
+                            autoComplete="off"
                             style={{
                                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                             }}

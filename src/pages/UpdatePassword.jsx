@@ -32,6 +32,7 @@ function UpdatePassword() {
         e.preventDefault()
         const token = location.pathname.split("/").at(-1)
         dispatch(resetPassword(password, confirmPassword, token, navigate))
+        navigate("/login");
     }
 
     return (
@@ -48,7 +49,7 @@ function UpdatePassword() {
                     </p>
                     <form onSubmit={handleOnSubmit}>
                         <label className="relative">
-                            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+                            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 font-semibold">
                                 New Password <sup className="text-pink-200">*</sup>
                             </p>
                             <input
@@ -58,7 +59,7 @@ function UpdatePassword() {
                                 value={password}
                                 onChange={handleOnChange}
                                 placeholder="Enter Password"
-                                className="form-style w-full !pr-10"
+                                className="form-style w-full !pr-10 bg-richblack-700 text-white p-3 rounded-xl"
                             />
                             <span
                                 onClick={() => setShowPassword((prev) => !prev)}
@@ -72,7 +73,7 @@ function UpdatePassword() {
                             </span>
                         </label>
                         <label className="relative mt-3 block">
-                            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+                            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 font-semibold">
                                 Confirm New Password <sup className="text-pink-200">*</sup>
                             </p>
                             <input
@@ -82,7 +83,7 @@ function UpdatePassword() {
                                 value={confirmPassword}
                                 onChange={handleOnChange}
                                 placeholder="Confirm Password"
-                                className="form-style w-full !pr-10"
+                                className="form-style w-full !pr-10  bg-richblack-700 text-white p-3 rounded-xl"
                             />
                             <span
                                 onClick={() => setShowConfirmPassword((prev) => !prev)}

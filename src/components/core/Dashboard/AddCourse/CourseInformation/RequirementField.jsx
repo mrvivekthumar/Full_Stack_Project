@@ -50,7 +50,7 @@ export default function RequirementsField({
           id={name}
           value={requirement}
           onChange={(e) => setRequirement(e.target.value)}
-          className="w-full px-3 py-2 rounded-md bg-richblack-700 text-richblack-100"
+          className="w-full px-3 py-2 rounded-md bg-richblack-700 text-richblack-200"
         />
         <button
           type="button"

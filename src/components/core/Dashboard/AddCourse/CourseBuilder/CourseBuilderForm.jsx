@@ -123,13 +123,13 @@ export default function CourseBuilderForm() {
                 </div>
                 <div className="flex items-end gap-x-4">
                     {/* <IconBtn
-            type="Submit"
-            disabled={loading}
-            text={editSectionName ? "Edit Section Name" : "Create Section"}
-            outline={true}
-          >
-            <IoAddCircleOutline size={20} className="text-yellow-50" />
-          </IconBtn> */}
+                        type="Submit"
+                        disabled={loading}
+                        text={editSectionName ? "Edit Section Name" : "Create Section"}
+                        outline={true}
+                    >
+                        <IoAddCircleOutline size={20} className="text-yellow-50" />
+                    </IconBtn> */}
                     <div className="flex items-center gap-x-1 text-richblack-100">
                         <button>{editSectionName ? "Edit Section Name" : "Create Section"}</button>
                         <IoAddCircleOutline size={20} className="text-yellow-50" />

@@ -17,6 +17,7 @@ const Catalog = () => {
     const [catalogPageData, setCatalogPageData] = useState(null);
     const [categoryId, setCategoryId] = useState("");
 
+
     //Fetch all categories
     useEffect(() => {
         const getCategories = async () => {

@@ -18,7 +18,7 @@ export default function NestedView({ handleChangeEditSectionName }) {
     const { course } = useSelector((state) => state.course)
     const { token } = useSelector((state) => state.auth)
     const dispatch = useDispatch();
-    
+
     // States to keep track of mode of modal [add, view, edit]
     const [addSubSection, setAddSubsection] = useState(null)
     const [viewSubSection, setViewSubSection] = useState(null)
@@ -153,6 +153,7 @@ export default function NestedView({ handleChangeEditSectionName }) {
                     </details>
                 ))}
             </div>
+
             {/* Modal Display */}
             {addSubSection ? (
                 <SubSectionModal
@@ -175,6 +176,8 @@ export default function NestedView({ handleChangeEditSectionName }) {
             ) : (
                 <></>
             )}
+
+            
             {/* Confirmation Modal */}
             {confirmationModal ? (
                 <ConfirmationModal modalData={confirmationModal} />

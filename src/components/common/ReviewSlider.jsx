@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
-import ReactStars from 'react-stars'
-// import Swiper React components
+import ReactStars from "react-rating-stars-component"
+// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 
 // Import Swiper styles
@@ -42,6 +42,7 @@ function ReviewSlider() {
                     slidesPerView={4}
                     spaceBetween={25}
                     loop={true}
+                    Pagination={true}
                     freeMode={true}
                     autoplay={{
                         delay: 2500,

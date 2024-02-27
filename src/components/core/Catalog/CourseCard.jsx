@@ -12,8 +12,6 @@ const Course_Card = ({ course, Height }) => {
         setAvgReviewCount(count);
     }, [course])
 
-
-
     return (
         <>
             <Link to={`/courses/${course._id}`}>

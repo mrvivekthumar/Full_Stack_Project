@@ -12,6 +12,7 @@ import VerifyEmail from "./pages/VerifyEmail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import MyProfile from "./components/core/Dashboard/MyProfile";
+import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import Error from "./pages/Error"
 import Settings from "./components/core/Dashboard/Settings";
@@ -28,7 +29,6 @@ import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
 import Scroll_To_Top_Button from "./utils/Scroll_To_Top_Button"
-import Dashboard from "./pages/Dashboard";
 
 function App() {
 
@@ -108,7 +108,10 @@ function App() {
           }
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
+
           <Route path="dashboard/Settings" element={<Settings />} />
+
+
           {
             user?.accountType === ACCOUNT_TYPE.STUDENT && (
               <>
@@ -125,10 +128,15 @@ function App() {
                 <Route path="dashboard/add-course" element={<AddCourse />} />
                 <Route path="dashboard/my-courses" element={<MyCourses />} />
                 <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} />
+
               </>
             )
           }
+
+
         </Route>
+
+
         <Route element={
           <PrivateRoute>
             <ViewCourse />
@@ -145,8 +153,14 @@ function App() {
               </>
             )
           }
+
         </Route>
+
+
+
         <Route path="*" element={<Error />} />
+
+
       </Routes>
       <Scroll_To_Top_Button />
     </div>

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { apiConnector } from '../services/apiConnector';
 import { categories } from '../services/api';
 import { getCatalogaPageData } from '../services/operations/pageAndComponentData';
-import Course_Card from '../components/core/Catalog/Course_Card';
+import Course_Card from '../components/core/Catalog/CourseCard';
 import CourseSlider from '../components/core/Catalog/CourseSlider';
 import { useSelector } from "react-redux"
 import Error from "./Error"
@@ -16,7 +16,6 @@ const Catalog = () => {
     const [active, setActive] = useState(1)
     const [catalogPageData, setCatalogPageData] = useState(null);
     const [categoryId, setCategoryId] = useState("");
-
 
     //Fetch all categories
     useEffect(() => {

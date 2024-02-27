@@ -77,6 +77,7 @@ export default function SubSectionModal({
             formData.append("video", currentValues.lectureVideo)
         }
         setLoading(true)
+        // Api CAll
         const result = await updateSubSection(formData, token)
         if (result) {
             // console.log("result", result)
@@ -93,8 +94,10 @@ export default function SubSectionModal({
 
     const onSubmit = async (data) => {
         // console.log(data)
+        // view COurse 
         if (view) return
 
+        // edit COurse
         if (edit) {
             if (!isFormUpdated()) {
                 toast.error("No changes made to the form")
@@ -104,6 +107,7 @@ export default function SubSectionModal({
             return
         }
 
+        // create course
         const formData = new FormData()
         formData.append("sectionId", modalData)
         formData.append("title", data.lectureTitle)

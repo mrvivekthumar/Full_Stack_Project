@@ -35,6 +35,7 @@ export default function Upload({
         accept: !video
             ? "image/*"
             : "video/*",
+        // accept: "image/*, video/*",
         onDrop,
     });
 

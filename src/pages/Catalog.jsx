@@ -39,9 +39,9 @@ const Catalog = () => {
                 console.log(error)
             }
         }
-        if (categoryId) {
-            getCategoryDetails();
-        }
+        // if (categoryId) {
+        // }
+        getCategoryDetails();
 
     }, [categoryId]);
 

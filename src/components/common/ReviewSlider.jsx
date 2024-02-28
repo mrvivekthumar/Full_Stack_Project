@@ -42,7 +42,7 @@ function ReviewSlider() {
                     slidesPerView={4}
                     spaceBetween={25}
                     loop={true}
-                    Pagination={true}
+                    // Pagination={true}
                     freeMode={true}
                     autoplay={{
                         delay: 2500,
@@ -98,7 +98,12 @@ function ReviewSlider() {
                             </SwiperSlide>
                         )
                     })}
-                    {/* <SwiperSlide>Slide 1</SwiperSlide> */}
+                    <SwiperSlide>Slide 1</SwiperSlide>
+                    <SwiperSlide>Slide 1</SwiperSlide>
+                    <SwiperSlide>Slide 1</SwiperSlide>
+                    <SwiperSlide>Slide 1</SwiperSlide>
+                    <SwiperSlide>Slide 1</SwiperSlide>
+                    <SwiperSlide>Slide 1</SwiperSlide>
                 </Swiper>
             </div>
         </div>

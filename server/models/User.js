@@ -41,6 +41,16 @@ const userSchema = new mongoose.Schema(
             type: Boolean,
             default: true,
         },
+        token: {
+            type: String,
+        },
+        resetPasswordExpires: {
+            type: Date,
+        },
+        image: {
+            type: String,
+            required: true,
+        },
         additionalDetails: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
@@ -52,16 +62,6 @@ const userSchema = new mongoose.Schema(
                 ref: "Course",
             },
         ],
-        token: {
-            type: String,
-        },
-        resetPasswordExpires: {
-            type: Date,
-        },
-        image: {
-            type: String,
-            required: true,
-        },
         courseProgress: [
             {
                 type: mongoose.Schema.Types.ObjectId,

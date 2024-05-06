@@ -36,7 +36,6 @@ const CourseInformationForm = () => {
     useEffect(() => {
         const getCategories = async () => {
             setLoading(true);
-            console.log("console log 2");
             const categories = await fetchCourseCategories();
             if (categories.length > 0) {
                 setCourseCategories(categories);
@@ -230,9 +229,6 @@ const CourseInformationForm = () => {
                     <option value="" disabled>
                         Choose a Category
                     </option>
-                    {
-                        console.log("console log 1")
-                    }
 
                     {!loading &&
                         courseCategories.map((category, index) => (

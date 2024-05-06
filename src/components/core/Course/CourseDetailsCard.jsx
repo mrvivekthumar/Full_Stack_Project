@@ -47,6 +47,8 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
     }
 
     // console.log("Student already enrolled ", course?.studentsEnroled, user?._id)
+    const formattedPrice = isNaN(CurrentPrice) ? "Price not available" : `Rs. ${CurrentPrice}`;
+
 
     return (
         <>

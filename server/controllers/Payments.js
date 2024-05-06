@@ -47,8 +47,10 @@ exports.capturePayment = async(req, res) => {
         currency,
         receipt: Math.random(Date.now()).toString(),
     }
+    console.log(options);
 
     try{
+        
         const paymentResponse = await instance.orders.create(options);
         res.json({
             success:true,
@@ -89,11 +91,11 @@ exports.verifyPayment = async(req, res) => {
             //return res
             return res.status(200).json({success:true, message:"Payment Verified"});
         }
-        return res.status(200).json({success:"false", message:"Payment Failed"});
+        return res.status(200).json({success:false, message:"Payment Failed"});
 
 }
 
-
+ 
 const enrollStudents = async(courses, userId, res) => {
 
     if(!courses || !userId) {

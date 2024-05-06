@@ -21,12 +21,12 @@ export default function RenderTotalAmount() {
             <p className="mb-1 text-sm font-medium text-richblack-300">Total:</p>
             <p className="mb-6 text-3xl font-medium text-yellow-100">₹ {total}</p>
             {/* <IconBtn
-                text="Buy Now"
-                onclick={handleBuyCourse}
-                customClasses="w-full bg-yellow-600 justify-center"
-            /> */}
+        text="Buy Now"
+        onclick={handleBuyCourse}
+        customClasses="w-full bg-yellow-50 justify-center"
+      /> */}
 
-            <button onClick={handleBuyCourse} className="bg-yellow-600 font-semibold rounded-md px-3 py-2">
+            <button onClick={handleBuyCourse} className="bg-yellow-50 font-semibold rounded-md px-3 py-2">
                 Buy Now
             </button>
         </div>

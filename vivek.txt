@@ -1,4 +1,4 @@
-RederCartCourses ma getAverageRating Span ma Lagavani che line NO:34
+to run : npm run dev
 
 
 

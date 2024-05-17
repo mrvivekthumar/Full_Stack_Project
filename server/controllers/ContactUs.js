@@ -1,26 +1,26 @@
-const { contactUsEmail } = require("../mail/templates/contactFormRes")
-const mailSender = require("../utils/mailSender")
+const { contactUsEmail } = require("../mail/templates/contactFormRes");
+const mailSender = require("../utils/mailSender");
+const logger = require("../utils/logger");
 
 exports.contactUsController = async (req, res) => {
-    const { email, firstname, lastname, message, phoneNo, countrycode } = req.body
-    console.log(req.body)
+    const { email, firstname, lastname, message, phoneNo, countrycode } = req.body;
+    logger.info("Contact form submitted:", req.body);
     try {
         const emailRes = await mailSender(
             email,
-            "Your Data send successfully",
+            "Your Data sent successfully",
             contactUsEmail(email, firstname, lastname, message, phoneNo, countrycode)
-        )
-        console.log("Email Res ", emailRes)
+        );
+        logger.info("Email sent successfully:", emailRes.response);
         return res.json({
             success: true,
-            message: "Email send successfully",
-        })
+            message: "Email sent successfully",
+        });
     } catch (error) {
-        console.log("Error", error)
-        console.log("Error message :", error.message)
+        logger.error("Error occurred while sending email:", error.message);
         return res.json({
             success: false,
             message: "Something went wrong...",
-        })
+        });
     }
-}
+};

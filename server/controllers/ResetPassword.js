@@ -2,6 +2,7 @@ const User = require("../models/User");
 const mailSender = require("../utils/mailSender");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+const logger = require('../utils/logger');  // Adjust the path as needed
 
 exports.resetPasswordToken = async (req, res) => {
     try {
@@ -23,8 +24,8 @@ exports.resetPasswordToken = async (req, res) => {
             },
             { new: true }
         );
-        console.log("DETAILS", updatedDetails);
-        const url = `http://localhost:3000/update-password/${token}`
+        logger.info("DETAILS", updatedDetails);
+        const url = `http://localhost:3000/update-password/${token}`;
         // const url = `https://study-notion-frontend-wheat.vercel.app/update-password/${token}`;
         // const url = `https://skill-sync-4e5nbglbx-mrvivekthumars-projects.vercel.app/update-password/${token}`;
 
@@ -40,6 +41,7 @@ exports.resetPasswordToken = async (req, res) => {
                 "Email Sent Successfully, Please Check Your Email to Continue Further",
         });
     } catch (error) {
+        logger.error(error.message);
         return res.json({
             error: error.message,
             success: false,
@@ -82,6 +84,7 @@ exports.resetPassword = async (req, res) => {
             message: `Password Reset Successful`,
         });
     } catch (error) {
+        logger.error(error.message);
         return res.json({
             error: error.message,
             success: false,

@@ -2,6 +2,7 @@
 const Section = require("../models/Section");
 const SubSection = require("../models/SubSection");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
+const logger = require('../utils/logger');  // Adjust the path as needed
 
 // Create a new sub-section for a given section
 exports.createSubSection = async (req, res) => {
@@ -16,14 +17,14 @@ exports.createSubSection = async (req, res) => {
                 .status(404)
                 .json({ success: false, message: "All Fields are Required" })
         }
-        console.log(video)
+        logger.info(video)
 
         // Upload the video file to Cloudinary
         const uploadDetails = await uploadImageToCloudinary(
             video,
             process.env.FOLDER_NAME
         )
-        console.log(uploadDetails)
+        logger.info(uploadDetails)
         // Create a new sub-section with the necessary information
         const SubSectionDetails = await SubSection.create({
             title: title,
@@ -43,7 +44,7 @@ exports.createSubSection = async (req, res) => {
         return res.status(200).json({ success: true, data: updatedSection })
     } catch (error) {
         // Handle any errors that may occur during the process
-        console.error("Error creating new sub-section:", error)
+        logger.error("Error creating new sub-section:", error)
         return res.status(500).json({
             success: false,
             message: "Internal server error",
@@ -92,7 +93,7 @@ exports.updateSubSection = async (req, res) => {
             message: "Section updated successfully",
         })
     } catch (error) {
-        console.error(error)
+        logger.error(error)
         return res.status(500).json({
             success: false,
             message: "An error occurred while updating the section",
@@ -127,7 +128,7 @@ exports.deleteSubSection = async (req, res) => {
             message: "SubSection deleted successfully",
         })
     } catch (error) {
-        console.error(error)
+        logger.error(error)
         return res.status(500).json({
             success: false,
             message: "An error occurred while deleting the SubSection",

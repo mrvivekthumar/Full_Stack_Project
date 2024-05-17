@@ -1,6 +1,8 @@
 const Section = require("../models/Section");
 const Course = require("../models/Course");
 const SubSection = require("../models/SubSection");
+const logger = require('../utils/logger');  // Adjust the path as needed
+
 // CREATE a new section
 exports.createSection = async (req, res) => {
     try {
@@ -44,6 +46,7 @@ exports.createSection = async (req, res) => {
         });
     } catch (error) {
         // Handle errors
+        logger.error("Error creating section:", error);
         res.status(500).json({
             success: false,
             message: "Internal server error",
@@ -77,7 +80,7 @@ exports.updateSection = async (req, res) => {
             data: course,
         });
     } catch (error) {
-        console.error("Error updating section:", error);
+        logger.error("Error updating section:", error);
         res.status(500).json({
             success: false,
             message: "Internal server error",
@@ -88,28 +91,27 @@ exports.updateSection = async (req, res) => {
 // DELETE a section
 exports.deleteSection = async (req, res) => {
     try {
-
         const { sectionId, courseId } = req.body;
         await Course.findByIdAndUpdate(courseId, {
             $pull: {
                 courseContent: sectionId,
             }
-        })
+        });
         const section = await Section.findById(sectionId);
-        console.log(sectionId, courseId);
+        logger.info(`Section ID: ${sectionId}, Course ID: ${courseId}`);
         if (!section) {
             return res.status(404).json({
                 success: false,
                 message: "Section not Found",
-            })
+            });
         }
 
-        //delete sub section
+        // Delete sub-sections
         await SubSection.deleteMany({ _id: { $in: section.subSection } });
 
         await Section.findByIdAndDelete(sectionId);
 
-        //find the updated course and return 
+        // Find the updated course and return 
         const course = await Course.findById(courseId).populate({
             path: "courseContent",
             populate: {
@@ -124,10 +126,10 @@ exports.deleteSection = async (req, res) => {
             data: course
         });
     } catch (error) {
-        console.error("Error deleting section:", error);
+        logger.error("Error deleting section:", error);
         res.status(500).json({
             success: false,
             message: "Internal server error",
         });
     }
-};   
+};

@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table"
-
 import { setCourse, setEditCourse } from "../../../../slices/courseSlice"
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 import { useState } from "react"
@@ -9,12 +8,8 @@ import { FiEdit2 } from "react-icons/fi"
 import { HiClock } from "react-icons/hi"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { useNavigate } from "react-router-dom"
-
 import { formatDate } from "../../../../services/formatDate"
-import {
-    deleteCourse,
-    fetchInstructorCourses,
-} from "../../../../services/operations/courseDetailsAPI"
+import { deleteCourse, fetchInstructorCourses } from "../../../../services/operations/courseDetailsAPI"
 import { COURSE_STATUS } from "../../../../utils/constants"
 import ConfirmationModal from "../../../common/ConfirmationModal"
 
@@ -44,11 +39,9 @@ export default function CoursesTable({ courses, setCourses }) {
             <Table className="rounded-xl border relative border-richblack-800">
                 <Thead>
                     <Tr className="flex md:gap-x-10 md:w-full rounded-t-md border-b border-b-richblack-800 md:px-6 py-2">
-                        <div className="text-richblack-100">
-                            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
-                                Courses
-                            </Th>
-                        </div>
+                        <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
+                            Courses
+                        </Th>
                         {/* <Th className="text-left text-sm font-medium uppercase text-richblack-100">
               Duration
             </Th> */}

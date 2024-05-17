@@ -140,7 +140,7 @@ function CourseDetails() {
                             />
                         </div>
                         <div
-                            className={`z-30 my-5 flex flex-col justify-center gap-4 py-5 text-lg text-richblack-5`}
+                            className={`z-30 my-5 flex flex-col justify-center gap-4 py-5 text-lg text-richblack-5 lg:w-7/12 lg:pr-8`}
                         >
                             <div>
                                 <p className="text-4xl font-bold text-richblack-5 sm:text-[42px]">
@@ -149,10 +149,10 @@ function CourseDetails() {
                             </div>
                             <p className={`text-richblack-200`}>{courseDescription}</p>
                             <div className="text-md flex flex-wrap items-center gap-2">
-                                <span className="text-yellow-25">{avgReviewCount}</span>
-                                <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
-                                <span>{`(${ratingAndReviews.length} reviews)`}</span>
-                                <span>{`${studentsEnrolled.length} students enrolled`}</span>
+                                <span className="text-yellow-25">{isNaN(avgReviewCount) ? 'N/A' : avgReviewCount}</span>
+                                <RatingStars Review_Count={isNaN(avgReviewCount) ? 0 : avgReviewCount} Star_Size={24} />
+                                <span>{isNaN(ratingAndReviews.length) ? 'N/A' : `${ratingAndReviews.length} reviews`}</span>
+                                <span>{isNaN(studentsEnrolled.length) ? 'N/A' : `${studentsEnrolled.length} students enrolled`}</span>
                             </div>
                             <div>
                                 <p className="">
@@ -170,18 +170,20 @@ function CourseDetails() {
                                 </p>
                             </div>
                         </div>
-                        <div className="flex w-full flex-col gap-4 border-y border-y-richblack-500 py-4 lg:hidden">
-                            <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
-                                Rs. {price}
-                            </p>
-                            <button className="yellowButton" onClick={handleBuyCourse}>
-                                Buy Now
-                            </button>
-                            <button className="blackButton">Add to Cart</button>
+                        <div className="hidden lg:block lg:w-5/12 lg:pl-8">
+                            <div className="flex flex-col gap-4 border-y border-y-richblack-500 py-4">
+                                <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
+                                    Rs. {price}
+                                </p>
+                                <button className="yellowButton" onClick={handleBuyCourse}>
+                                    Buy Now
+                                </button>
+                                <button className="blackButton">Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                     {/* Courses Card */}
-                    <div className="right-[1rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute  lg:block">
+                    <div className="right-[1rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute lg:block">
                         <CourseDetailsCard
                             course={response?.data?.courseDetails}
                             setConfirmationModal={setConfirmationModal}
@@ -266,3 +268,5 @@ function CourseDetails() {
 }
 
 export default CourseDetails
+
+

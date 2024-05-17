@@ -94,6 +94,7 @@ const ContactUsForm = () => {
                     type="email"
                     name="email"
                     id="email"
+                    autoComplete="on"
                     placeholder="Enter Email Address"
                     className="form-style  bg-richblack-800 p-2 rounded-md"
                     {...register("email", { required: true })}
@@ -116,7 +117,7 @@ const ContactUsForm = () => {
                         <select
                             type="text"
                             name="firstname"
-                            id="firstname"
+                            id="FirstName"
                             placeholder="Enter First Name"
                             className="form-style  bg-richblack-800 p-2 rounded-md w-28"
                             {...register("countrycode", { required: true })}

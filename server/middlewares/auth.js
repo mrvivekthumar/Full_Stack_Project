@@ -2,16 +2,29 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const User = require("../models/User");
 
+// added a logging library 
+const winston = require("winston");
+
+// Create a Winston logger instance
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.json(),
+    transports: [
+        new winston.transports.Console(),
+        // You can add more transports here, such as file, database, etc.
+    ],
+});
+
 //auth
 exports.auth = async (req, res, next) => {
     try {
 
-        console.log("BEFORE ToKEN EXTRACTION");
+        logger.info("BEFORE TOKEN EXTRACTION");
         //extract token
         const token = req.cookies.token
             || req.body.token
             || req.header("Authorization").replace("Bearer ", "");
-        console.log("AFTER ToKEN EXTRACTION");
+        logger.info("AFTER TOKEN EXTRACTION");
 
         //if token missing, then return response
         if (!token) {
@@ -24,11 +37,12 @@ exports.auth = async (req, res, next) => {
         //verify the token
         try {
             const decode = jwt.verify(token, process.env.JWT_SECRET);
-            console.log(decode);
+            logger.info("Token decoded:", decode);
             req.user = decode;
         }
         catch (err) {
             //verification - issue
+            logger.error("Token verification failed:", err);
             return res.status(401).json({
                 success: false,
                 message: 'token is invalid',
@@ -37,6 +51,7 @@ exports.auth = async (req, res, next) => {
         next();
     }
     catch (error) {
+        logger.error("Error validating token:", error);
         return res.status(401).json({
             success: false,
             message: 'Something went wrong while validating the token',
@@ -56,6 +71,7 @@ exports.isStudent = async (req, res, next) => {
         next();
     }
     catch (error) {
+        logger.error("Error verifying student role:", error);
         return res.status(500).json({
             success: false,
             message: 'User role cannot be verified, please try again'
@@ -76,6 +92,7 @@ exports.isInstructor = async (req, res, next) => {
         next();
     }
     catch (error) {
+        logger.error("Error verifying instructor role:", error);
         return res.status(500).json({
             success: false,
             message: 'User role cannot be verified, please try again'
@@ -87,7 +104,7 @@ exports.isInstructor = async (req, res, next) => {
 //isAdmin
 exports.isAdmin = async (req, res, next) => {
     try {
-        console.log("Printing AccountType ", req.user.accountType);
+        logger.info("Printing AccountType ", req.user.accountType);
         if (req.user.accountType !== "Admin") {
             return res.status(401).json({
                 success: false,
@@ -97,6 +114,7 @@ exports.isAdmin = async (req, res, next) => {
         next();
     }
     catch (error) {
+        logger.error("Error verifying admin role:", error);
         return res.status(500).json({
             success: false,
             message: 'User role cannot be verified, please try again'

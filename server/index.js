@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const morgan = require('morgan'); 
 
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profile");
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 4000;
 //database connect
 database.connect();
 //middlewares
+app.use(morgan('combined'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());

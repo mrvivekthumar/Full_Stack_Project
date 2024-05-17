@@ -171,7 +171,7 @@ const Footer = () => {
                         })}
                     </div>
 
-                    <div className="text-center">Made by Vivek © 2023 Studynotion</div>
+                    <div className="text-center">Skill Sync ❤️ Made For Learning</div>
                 </div>
             </div>
         </div>

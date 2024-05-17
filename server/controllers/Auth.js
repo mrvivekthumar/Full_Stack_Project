@@ -6,18 +6,9 @@ const otpGenerator = require("otp-generator");
 const mailSender = require("../utils/mailSender");
 const { passwordUpdated } = require("../mail/templates/passwordUpdate");
 const Profile = require("../models/Profile");
-const winston = require("winston");
 require("dotenv").config();
+const logger = require("../utils/logger");
 
-// Create a Winston logger instance
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.json(),
-    transports: [
-        new winston.transports.Console(),
-        // You can add more transports here, such as file, database, etc.
-    ],
-});
 
 // Signup Controller for Registering Users
 exports.signup = async (req, res) => {

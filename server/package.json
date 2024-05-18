@@ -1,16 +1,15 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend server for managing user authentication and data storage.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build": "echo 'No build step required for backend'",
-    "vercel-build": "node index.js"
+    "build": "npm install"
   },
   "keywords": [],
-  "author": "",
+  "author": "Thumar Vivek mrvivekthumar@gmail.com",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",

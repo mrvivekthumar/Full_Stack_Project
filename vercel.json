@@ -1,16 +1,22 @@
 {
     "version": 2,
-    "name": "fullstack-app",
     "builds": [
         {
-            "src": "server/index.js",
+            "src": "/server/**",
             "use": "@vercel/node"
+        },
+        {
+            "src": "/src/**",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "./build"
+            }
         }
     ],
     "routes": [
         {
-            "src": "/api/(.*)",
-            "dest": "/server/index.js"
+            "src": "/api/v1/(.*)",
+            "dest": "/server/$1"
         },
         {
             "src": "/(.*)",
